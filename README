@@ -1,0 +1,10 @@
+build:
+	make
+
+use:
+	./run-qemu.sh
+
+contains:
+	busybox 1.20.2
+	linux 3.7.5
+	mksh R47

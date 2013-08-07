@@ -4,6 +4,7 @@ rootfs:
 	@sh build.sh
 image:
 	@sh genimg.sh
+	@cp fs/boot/vmlinuz-* vmlinuz
 
 clean: clean-build clean-fs clean-cross clean-src clean-img
 
@@ -16,4 +17,4 @@ clean-cross:
 clean-fs:
 	rm -rf fs/*
 clean-img:
-	rm -f dralinux.img
+	rm -f dralinux.img vmlinuz

@@ -34,6 +34,7 @@ install() {
 	else
 		cp arch/$ARCH/bzImage $R/boot/vmlinuz-$ver
 	fi
+	ln -s /boot/vmlinuz-$ver $R/boot/vmlinuz
 	
 	mkdir -p $R/include
 	cp -rv dest/include/* $R/include/
