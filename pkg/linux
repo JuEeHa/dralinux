@@ -1,0 +1,40 @@
+name=linux
+ver=3.7.5
+url=http://www.kernel.org/pub/linux/kernel/v3.0/linux-$ver.tar.bz2
+
+patches="linux-noperl-capflags.patch linux-noperl-headers.patch linux-noperl-timeconst.patch linux-posix-sed.patch linux-workaround-old-gcc.patch"
+
+install() {
+	CROSS_COMPILE="$A-unknown-linux-musl-" export CROSS_COMPILE
+	case $A in
+		i486)
+			ARCH=i386
+			;;
+		i585)
+			ARCH=i386
+			;;
+		i686)
+			ARCH=i386
+			;;
+		*)
+			ARCH=$A
+			;;
+	esac
+	export ARCH
+	
+	make allnoconfig KCONFIG_ALLCONFIG="$T/conf/linux.config"
+	make INSTALL_HDR_PATH=dest headers_install
+	find dest/include \( -name .install -o -name ..install.cmd \) -delete
+	make
+	mkdir -p $R/boot
+	cp System.map $R/boot
+	if test z$ARCH = zi386 -o z$ARCH = zx86_64
+	then
+		cp arch/x86/boot/bzImage $R/boot/vmlinuz-$ver
+	else
+		cp arch/$ARCH/bzImage $R/boot/vmlinuz-$ver
+	fi
+	
+	mkdir -p $R/include
+	cp -rv dest/include/* $R/include/
+}

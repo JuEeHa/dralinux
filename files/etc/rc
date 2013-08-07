@@ -1,0 +1,13 @@
+#!/bin/sh
+mount -t proc proc /proc
+mount -o remount,rw /
+mount -t sysfs sysfs /sys
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+echo /bin/mdev > /proc/sys/kernel/hotplug
+hostname $(cat /etc/hostname)
+TZ=$(cat /etc/TZ) export TZ
+if test -e /etc/kmap.conf
+then
+	loadkmap < /kmap/$(cat /etc/kmap.conf).kmap
+fi

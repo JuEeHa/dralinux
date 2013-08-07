@@ -1,0 +1,8 @@
+ver=R47
+url=https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-$ver.tgz
+
+install() {
+	sh Build.sh
+	mkdir -p $R/bin
+	cp mksh $R/bin
+}

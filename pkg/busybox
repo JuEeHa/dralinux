@@ -1,0 +1,18 @@
+ver=1.20.2
+url=http://busybox.net/downloads/$name-$ver.tar.bz2
+
+patches=busybox-musl-fixes.patch
+
+install() {
+	CROSS_COMPILE="$A-unknown-linux-musl-" export CROSS_COMPILE
+	make allnoconfig KCONFIG_ALLCONFIG="$T"/conf/busybox.config
+	make
+	make busybox.links
+	mkdir -p "$R/bin"
+	cp busybox "$R/bin/busybox"
+	
+	for i in $(cat busybox.links)
+	do
+		ln -sf busybox "$R/bin/$(basename $i)"
+	done
+}

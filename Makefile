@@ -1,0 +1,19 @@
+all: rootfs image
+
+rootfs:
+	@sh build.sh
+image:
+	@sh genimg.sh
+
+clean: clean-build clean-fs clean-cross clean-src clean-img
+
+clean-src:
+	rm -rf src/*
+clean-build:
+	rm -rf build/*
+clean-cross:
+	rm -rf cross-tools/*
+clean-fs:
+	rm -rf fs/*
+clean-img:
+	rm -f dralinux.img

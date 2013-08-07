@@ -1,0 +1,63 @@
+#/bin/sh
+
+download() {
+	if test ! -f $S/$(basename $url)
+	then
+		echo "Downloading: $name"
+		wget -O $S/$(basename $url) $url || exit 1
+	fi
+}
+
+extract() {
+	echo "Extracting: $name"
+	cd $T/build
+	test -d $name-$ver && rm -r $name-$ver
+	test -d $name && rm -r $name
+	case $(basename $url | tr '.' '
+' | tail -n 1) in
+		gz)
+			tar xzf $S/$(basename $url) || exit 1
+			;;
+		tgz)
+			tar xzf $S/$(basename $url) || exit 1
+			;;
+		bz2)
+			tar xjf $S/$(basename $url) || exit 1
+			;;
+		*)
+			echo "build: $(basename $url | tr '.' '
+' | tail -n 1): Not a supported format"
+			exit 1
+			;;
+	esac
+	
+	test -d $name-$ver && pkgdir=$name-$ver
+	test -d $name && pkgdir=$name
+	if test z$pkgdir = z
+	then
+		echo "Package '$name' didn't extract to $name-$ver/ or $name/, WTF"
+	fi
+	cd $pkgdir
+}
+
+applypatches() {
+	test z"$patches" != z && echo "Patching: $name"
+	for i in $patches
+	do
+		echo "Applying: $i"
+		patch -p1 < $P/$i || exit 1
+	done
+}
+
+if test ! -f $1
+then
+	echo "build: $1: Not found"
+	exit 1
+fi
+name=$(basename $1)
+. $1
+
+download
+extract
+applypatches
+install

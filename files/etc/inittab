@@ -1,0 +1,9 @@
+::sysinit:/etc/rc
+tty1:2345:respawn:/bin/getty 38400 tty1
+tty2:23:respawn:/bin/getty 38400 tty2
+tty3:23:respawn:/bin/getty 38400 tty3
+tty4:23:respawn:/bin/getty 38400 tty4
+tty5:23:respawn:/bin/getty 38400 tty5
+tty6:23:respawn:/bin/getty 38400 tty6
+::ctrlaltdel:/bin/umount -a -r
+::ctrlaltdel:/bin/swapoff -a
