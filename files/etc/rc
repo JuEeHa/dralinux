@@ -4,10 +4,19 @@ mount -o remount,rw /
 mount -t sysfs sysfs /sys
 mkdir /dev/pts
 mount -t devpts devpts /dev/pts
+
 echo /bin/mdev > /proc/sys/kernel/hotplug
+
 hostname $(cat /etc/hostname)
 TZ=$(cat /etc/TZ) export TZ
+
 if test -e /etc/kmap.conf
 then
 	loadkmap < /kmap/$(cat /etc/kmap.conf).kmap
+else
+	sh /etc/selectkmap.sh
+	loadkmap < /kmap/$(cat /etc/kmap.conf).kmap
 fi
+
+ifconfig lo 127.0.0.1 up
+route add 127.0.0.1 lo
