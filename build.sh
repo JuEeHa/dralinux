@@ -54,3 +54,7 @@ do
 	cp -rf $i/* fs/
 done
 cp -rf files/* fs/
+for i in dev etc mnt proc root sys tmp
+do
+	test -d fs/$i || mkdir -p fs/$i
+done
