@@ -1,0 +1,12 @@
+ver=0.9.12
+url=http://www.musl-libc.org/releases/musl-$ver.tar.gz
+
+install() {
+	munge-config-sub
+	./configure --prefix= -host=$A-unknown-linux-musl --target=$A-unknown-linux-musla --disable-gcc-wrapper
+	make
+	make DESTDIR="$R" install
+	mkdir -p $R/bin
+	ln -s ../lib/libc.so $R/bin/ldd
+	ln -sf libc.so $R/lib/ld-musl-$A.so.1
+}

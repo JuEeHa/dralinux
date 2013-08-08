@@ -11,3 +11,4 @@ contains:
 	linux 3.7.5
 	gnu make 3.82
 	mksh R47
+	musl 0.9.12
