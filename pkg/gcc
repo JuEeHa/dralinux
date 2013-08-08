@@ -1,0 +1,22 @@
+ver=4.2.1
+url=http://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-core-$ver.tar.bz2
+
+patches=gcc-4.2.1-musl.diff
+
+install() {
+	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+	
+	for i in strsignal putenv random setenv strstr strtod strtol strtoul
+	do
+		fname=libiberty/$i.c
+		rm $fname
+		touch $fname
+	done
+	munge-config-sub
+	./configure --prefix= --host=$A-unknown-linux-musl --target=$A-unknown-linux-musl --build=$A-unknown-linux --enable-languages=c --disable-libmudflap --disable-shared --disable-nls --disable-bootstrap --disable-libgomp --with-newlib
+	make all-gcc
+	make install-gcc DESTDIR="$R"
+	rm -rf $R/lib/gcc/$A-unknown-linux-musl/$version/install-tools
+	rm -rf $R/libexec/gcc/$A-unknown-linux-musl/$version/install-tools
+	rm -rf $R/man $R/info
+}

@@ -1,0 +1,10 @@
+ver=3.82
+url=http://ftp.gnu.org/gnu/make/make-$ver.tar.bz2
+
+install() {
+	munge-config-sub config/config.sub
+	./configure --prefix= --host=$A-unknown-linux-musl --target=$A-unknown-linux-musl --disable-nls
+	make
+	make DESTDIR="$R" install
+	rm -r $R/share
+}

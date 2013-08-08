@@ -11,8 +11,8 @@ download() {
 extract() {
 	echo "Extracting: $name"
 	cd $T/build
-	test -d $name-$ver && rm -r $name-$ver
-	test -d $name && rm -r $name
+	test -d $name-$ver && rm -rf $name-$ver
+	test -d $name && rm -rf $name
 	case $(basename $url | tr '.' '
 ' | tail -n 1) in
 		gz)

@@ -1,0 +1,14 @@
+ver=397a64b3
+url=http://landley.net/aboriginal/mirror/binutils-$ver.tar.bz2
+
+patches=binutils-screwinfo.patch
+
+install() {
+	munge-config-sub
+	CFLAGS="$CFLAGS -ffunction-sections -fdata-sections"
+	LDFLAGS="$LDFLAGS -Wl,--gc-sections"
+	./configure --prefix= --host=$A-unknown-linux-musl --target=$A-unknown-linux-musl --disable-werror --disable-shared --disable-nls --disable-install-libbfd
+	make tooldir=""
+	make install-gas install-ld install-binutils DESTDIR=$R tooldir=""
+	rm -rf $R/man $R/info
+}

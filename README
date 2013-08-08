@@ -5,6 +5,9 @@ use:
 	./run-qemu.sh
 
 contains:
+	binutils 397a64b3
 	busybox 1.20.2
+	gcc 4.2.1
 	linux 3.7.5
+	gnu make 3.82
 	mksh R47

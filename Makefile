@@ -6,7 +6,7 @@ image:
 	@sh genimg.sh
 	@cp fs/boot/vmlinuz-* vmlinuz
 
-clean: clean-build clean-fs clean-cross clean-src clean-img
+dist-clean: clean-build clean-fs clean-cross clean-src clean-img clean-binpkg
 
 clean-src:
 	rm -rf src/*
@@ -18,3 +18,5 @@ clean-fs:
 	rm -rf fs/*
 clean-img:
 	rm -f dralinux.img vmlinuz
+clean-binpkg:
+	rm -rf bin-pkg/*
