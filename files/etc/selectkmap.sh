@@ -6,7 +6,7 @@ do
 	read LINE
 	if test -n "$(ls /kmap | grep "^$LINE.kmap$")"
 	then
-		echo "$LINE" > /etc/kmap.conf
+		echo "$LINE" > /etc/kmap
 		exit 0
 	else
 		echo "Available keymaps: "$(ls /kmap | sed 's/.kmap$//')

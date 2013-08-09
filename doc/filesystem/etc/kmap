@@ -1,0 +1,4 @@
+/etc/kmap
+=========
+/etc/kmap should contain the name of keymap to be used (without .kmap extension
+or newlines). Keymaps are found in /kmap.
