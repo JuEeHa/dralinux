@@ -55,6 +55,6 @@ to have it in draLinux please contact me.
 So, what can I use this thing for, anyways?
 -------------------------------------------
 
-Currently, not much. draLinux does,Âhowever ship with a gcc (4.2.1) that can
+Currently, not much. draLinux does, however ship with a gcc (4.2.1) that can
 produce executables linked against musl libc. I'd have more stuff but currently
 I can't get network to work. If you can help please contact me.
