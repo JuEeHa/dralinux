@@ -34,9 +34,9 @@ trouble.
 To compile draLinux from source do the following (it needs genext2fs and
 resize2fs):
 
- $ git clone git://github.com/JuEeHa/dralinux.git
- $ cd dralinux
- $ make
+    $ git clone git://github.com/JuEeHa/dralinux.git
+    $ cd dralinux
+    $ make
 
 This should create `dralinux.img` and `vmlinuz` you can use by running
 `run-qemu.sh`. (Of course, this requires qemu.)
