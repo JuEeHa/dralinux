@@ -1,5 +1,7 @@
 #!/bin/sh
-A=$(uname -m) export A
+# Uncomment following line and comment one after it if you want a native build instead of i686
+#A=$(uname -m) export A
+A=i686 export A
 T=$(pwd) export T
 S=$T/src export S
 P=$T/patch export P
@@ -58,3 +60,5 @@ for i in dev etc mnt proc root sys tmp
 do
 	test -d fs/$i || mkdir -p fs/$i
 done
+mkdir -p fs/doc
+cp doc/user/quickstart.md fs/doc/quickstart
