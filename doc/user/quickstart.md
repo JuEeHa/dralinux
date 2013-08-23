@@ -16,18 +16,18 @@ advice will probably also work on other architectures and emulators.
 Obtaining draLinux
 ------------------
 
-There are two ways of getting draLinux, either pre-compiled binaries or building
-from source yourself. For someone who only wants to play around with draLinux
-I'd recommend pre-compiled binaries. However, if you want to hack draLinux and
-for example add new packages to build system I'd recommend grabbing yourself
-sources and building from source.
+There are two ways of getting draLinux, either pre-compiled binaries or
+building from source yourself. For someone who only wants to play around with
+draLinux I'd recommend pre-compiled binaries. However, if you want to hack
+draLinux and for example add new packages to build system I'd recommend
+grabbing yourself sources and building from source.
 
 ### Pre-compiled binaries
 
 Pre-compiled binaries are .tgz files that contain `run-qemu.sh`, `dralinux.img`
-and `vmlinuz`. A .tgz corresponding to latest git revision should be avaiable at
-`http://norttimc.dy.fi/~nortti/dralinux/dralinux-i686.tgz` unless I have network
-trouble.
+and `vmlinuz`. A .tgz corresponding to latest git revision should be avaiable
+at `http://norttimc.dy.fi/~nortti/dralinux/dralinux-i686.tgz` unless I have
+network trouble.
 
 ### Compiling from source
 
