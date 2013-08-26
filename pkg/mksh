@@ -1,4 +1,4 @@
-ver=R47
+ver=R48b
 url=https://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-$ver.tgz
 
 install() {
