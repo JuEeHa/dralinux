@@ -1,4 +1,4 @@
-ver=0.9.12
+ver=0.9.13
 url=http://www.musl-libc.org/releases/musl-$ver.tar.gz
 
 install() {
@@ -8,5 +8,16 @@ install() {
 	make DESTDIR="$R" install
 	mkdir -p $R/bin
 	ln -s ../lib/libc.so $R/bin/ldd
+	case $A in
+		i486)
+			A=i386
+			;;
+		i586)
+			A=i386
+			;;
+		i686)
+			A=i386
+			;;
+	esac
 	ln -sf libc.so $R/lib/ld-musl-$A.so.1
 }
