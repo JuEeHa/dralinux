@@ -1,4 +1,4 @@
-ver=0.9.12
+ver=0.9.13
 url=http://www.musl-libc.org/releases/musl-$ver.tar.gz
 
 out=$T/cross-tools
