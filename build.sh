@@ -42,6 +42,8 @@ then
 	touch cross-tools/pkg_musl
 fi
 
+test z"$1" = "cross" && exit 0
+
 for i in pkg/*
 do
 	if test ! -d bin-pkg/$(basename $i)

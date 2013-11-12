@@ -2,6 +2,8 @@ all: rootfs image
 
 rootfs:
 	@sh build.sh
+cross:
+	@sh build.sh cross
 image:
 	@sh genimg.sh
 	@cp fs/boot/vmlinuz-* vmlinuz
