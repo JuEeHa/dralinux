@@ -42,7 +42,7 @@ then
 	touch cross-tools/pkg_musl
 fi
 
-test z"$1" = "cross" && exit 0
+test z"$1" = z"cross" && exit 0
 
 for i in pkg/*
 do
@@ -62,5 +62,3 @@ for i in dev etc mnt proc root srv sys tmp
 do
 	test -d fs/$i || mkdir -p fs/$i
 done
-mkdir -p fs/doc
-cp doc/user/quickstart.md fs/doc/quickstart
